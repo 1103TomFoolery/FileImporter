@@ -8,7 +8,7 @@ from .Cat import Cat
 
 
 class PDFImporter(ImportInterface):
-    allowed_extensions = ['.pdf']
+    allowed_extensions = ['pdf']
 
     @classmethod
     def parse(cls, path: str) -> List[Cat]:
@@ -21,7 +21,9 @@ class PDFImporter(ImportInterface):
         file_ref = open(tmp, "r")
         cats = []
         for line in file_ref.readlines():
+            print(line)
             line = line.strip('\n\r').strip()
+            print(line)
             if len(line) > 0:
                 parsed = line.split(',')
                 new_cat = Cat(parsed[0],
